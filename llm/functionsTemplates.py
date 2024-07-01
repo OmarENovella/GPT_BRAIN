@@ -219,6 +219,28 @@ tools = [
             "required" : ["query"]
         }
     }
+},
+
+{
+    "type" : "function",
+    "function" : {
+        "name" : "assitant_manners",
+        "description" : """
+        Esta funcion se activa con el fin de que el usuario tenga mas control sobre
+        las acciones del asistente 
+        """,
+        "parameters" : {
+            "type" : "object",
+            "properties" : {
+                "action" : {
+                    "type" : "integer",
+                    "description" : """
+                    1- Se le ha solicitado que guarde silencio al asistente
+                    """
+                }
+            }
+        }
+    }
 }
 
 
