@@ -224,7 +224,7 @@ tools = [
 {
     "type" : "function",
     "function" : {
-        "name" : "assitant_manners",
+        "name" : "assistant_manners",
         "description" : """
         Esta funcion se activa con el fin de que el usuario tenga mas control sobre
         las acciones del asistente 
@@ -238,7 +238,8 @@ tools = [
                     1- Se le ha solicitado que guarde silencio al asistente
                     """
                 }
-            }
+            },
+            "required" : ["action"]
         }
     }
 }
