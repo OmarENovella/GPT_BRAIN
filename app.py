@@ -7,7 +7,7 @@ from llm.gpt import (
     format_assistant_response,
     format_system_role
 )
-from llm.roleTemplates import AssistantRole, FunctionCallingRole
+from llm.roleTemplates import AssistantRole, FunctionCallingRole, CodeExecutionRole
 from llm.functionsTemplates import tools
 
 app = Flask(__name__)
@@ -42,6 +42,26 @@ def toolsCaller():
         )
             
         return jsonify(response.to_dict())
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+
+@app.route("/code_ex", methods=["POST"])
+def toolsCaller():
+    try:
+        data = validate_request_data(["message"])
+        message = data["message"]
+        
+        response = gpt_model_response(
+            temperature= 0,
+            messages=[
+                format_system_role(CodeExecutionRole),
+                format_user_query(message),
+            ]
+        )
+            
+        return jsonify({"response" : response})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
