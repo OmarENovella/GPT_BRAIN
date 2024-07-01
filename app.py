@@ -48,7 +48,7 @@ def toolsCaller():
     
 
 @app.route("/code_ex", methods=["POST"])
-def toolsCaller():
+def codeEx():
     try:
         data = validate_request_data(["message"])
         message = data["message"]
